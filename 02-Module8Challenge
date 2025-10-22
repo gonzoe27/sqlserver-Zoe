@@ -19,6 +19,7 @@ sqlcmd -S localhost -U sa -P P@ssw0rd -d Northwind -Q "SELECT * FROM Customers;"
 */
 
 
+
 USE Northwind;
 
 /*
@@ -27,32 +28,45 @@ Retrieve a list of products.
 The list should include the product name, unit price, 
 and how many units Northwind has in stock.
 */
-
+75 RhÃ¶nbrÃ¤u Klosterbier                            12           1 24 - 0.5 l bottles                  7.7500          125            0           25            0
+         76 LakkalikÃ¶Ã¶ri                                    23           1 500 ml                             18.0000           57            0           20            0
+         77 Original Frankfurter grÃ¼ne SoÃŸe                 12           2 12 boxes                           13.0000           32            0           15            0
 /
 *2.	
 List the product name and units in stock for products where UnitsInStock equals zero.
 */
-
+         29 ThÃ¼ringer Rostbratwurst                          12           6 50 bags x 30 sausgs.              123.7900            0            0            0            1
+         31 Gorgonzola Telino                                 14           4 12 - 100 g pkgs                    12.5000            0           70           20            0
+         53 Perth Pasties                                     24           6 48 pieces                          32.8000            0            0            0            1
 /*
 3.	List the product name and the unit price for each product. 
 Sort the list with the smallest unit price on top.
 */
-
+          9 Mishi Kobe Niku                                    4           6 18 - 500 g pkgs.                   97.0000           29            0            0            1
+         29 ThÃ¼ringer Rostbratwurst                          12           6 50 bags x 30 sausgs.              123.7900            0            0            0            1
+         38 CÃ´te de Blaye                                    18           1 12 - 75 cl bottles                263.5000           17            0           15            0
 
 /*
 4.	List all products with the brand "Sir Rodney's" in the product name. 
 */
+ProductID   ProductName                              SupplierID  CategoryID  QuantityPerUnit      UnitPrice             UnitsInStock UnitsOnOrder ReorderLevel Discontinued
+----------- ---------------------------------------- ----------- ----------- -------------------- --------------------- ------------ ------------ ------------ ------------
 
 
 /*
 5.	Create a list of product names and product IDs for products 
 with supplier ID 20. Order by product name. */
+         44 Gula Malacca                                      20           2 20 - 2 kg bags                     19.4500           27            0           15            0
+         43 Ipoh Coffee                                       20           1 16 - 500 g tins                    46.0000           17           10           25            0
+         42 Singaporean Hokkien Fried Mee                     20           5 32 - 1 kg pkgs.                    14.0000           26            0            0            1
 
 /*
 6.	List the product ID and product name for products with 
 zero units on order. Order by product ID. 
 */
-
+        75 RhÃ¶nbrÃ¤u Klosterbier                            12           1 24 - 0.5 l bottles                  7.7500          125            0           25            0
+         76 LakkalikÃ¶Ã¶ri                                    23           1 500 ml                             18.0000           57            0           20            0
+         77 Original Frankfurter grÃ¼ne SoÃŸe                 12           2 12 boxes                           13.0000           32            0           15            0
 /*
 7. Your boss has asked you for a list of orders for
        the employee Janet Leverling. 
@@ -61,19 +75,22 @@ zero units on order. Order by product ID.
 	   helped place the order.
        (Hint: Use a JOIN to retrieve data from more than one table.)
 */
-
+Msg 207, Level 16, State 1, Server fb95288fb308, Line 1
+Invalid column name 'CustomerName'.
 /*
 8. Insert a new record into the products table with a product name
     that is your favorite food, a unit price that is $4.55, supplier ID 26, and category ID 5.
 */
- 
+ (1 rows affected)
 
 
 /*
 9. Display the new record you added to the products table 
 where the product name is your favorite food.
 */
-
+ProductID   ProductName                              SupplierID  CategoryID  QuantityPerUnit      UnitPrice             UnitsInStock UnitsOnOrder ReorderLevel Discontinued
+----------- ---------------------------------------- ----------- ----------- -------------------- --------------------- ------------ ------------ ------------ ------------
+         78 Tacos                                             26           5 NULL                                 .5500            0            0            0            0
 /*
 10. Insert a record into the suppliers table.
     The record should contain the following values:
@@ -89,12 +106,15 @@ where the product name is your favorite food.
 11. Display the new record that you created in the suppliers
     table to ensure it was inserted correctly.
 */
-
+$ sqlcmd -S localhost -U sa -P P@ssw0rd -d Northwind -Q "Insert Into Suppliers(SupplierID, CompanyName, ContactName, ContactTitle, Address,City) Values (30, 'MCTC', 'Zoe', 'Manager', '123 Se
+asame Street', 'Saint Paul');"
+Msg 544, Level 16, State 1, Server fb95288fb308, Line 1
+Cannot insert explicit value for identity column in table 'Suppliers' when IDENTITY_INSERT is set to OFF.
 /*
 12. Update the record in the products table for your favorite food.
 Change the unit price from $4.55 to $9.99.
 */
-
+(1 rows affected)
 /*
 13. Insert a new record into the Categories table. 
 Insert the values 'Ice Cream'and 'Frosty desserts' into the 
@@ -103,11 +123,11 @@ a value into the CategoryID column because that it auto-populated.
 You don't need to insert a value into the Picture column 
 because it is optional.
 */
-
+(1 rows affected)
 /*
 14. Delete the record you just inserted into the Categories table.
 */
- 
+ (1 rows affected)
 
 
 
